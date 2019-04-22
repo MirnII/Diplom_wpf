@@ -7,17 +7,38 @@
         mc:Ignorable="d"
         Title="HelpDesk" Height="450" Width="800">
     <Grid>
-        <Grid x:Name="Control_p" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Background="#FF3BE2CB">
-            <Button x:Name="Login" Content="Войти" HorizontalAlignment="Left" Height="39" VerticalAlignment="Top" Width="171" Background="#FF3BE2CB" FontFamily="Times New Roman" FontSize="14" Margin="0,-1,0,0" Padding="0" BorderThickness="0" Click="Login_Click"/>
-            <TextBox x:Name="Log" HorizontalAlignment="Left" Height="25" Margin="0,43,0,0" TextWrapping="Wrap" Text="Логин" GotFocus="Log_GotFocus" LostFocus="Log_LostFocus" VerticalAlignment="Top" Width="171" TextChanged="Log_TextChanged" FontFamily="Times New Roman" FontSize="16"/>
+        <Grid x:Name="Control_p" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Background="#FF3BE2CB" Visibility="Hidden">
+            <Button x:Name="Login" Content="Войти" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="171" Background="#FF3BE2CB" FontFamily="Times New Roman" FontSize="14" Margin="0,130,0,0" Padding="0" BorderThickness="0" Click="Login_Click"/>
+            <TextBox x:Name="Log" HorizontalAlignment="Left" Height="25" Margin="0,44,0,0" TextWrapping="Wrap" Text="Логин" GotFocus="Log_GotFocus" LostFocus="Log_LostFocus" VerticalAlignment="Top" Width="171" TextChanged="Log_TextChanged" FontFamily="Times New Roman" FontSize="16"/>
             <PasswordBox x:Name="Pass" HorizontalAlignment="Left" GotFocus="Pass_GotFocus" LostFocus="Pass_LostFocus" Height="25" Margin="0,74,0,0" VerticalAlignment="Top" Width="171" FontFamily="Times New Roman" FontSize="16" Password="Пароль"/>
             <CheckBox x:Name="reme" Content="Запомнить меня" HorizontalAlignment="Left" Height="17" Margin="0,104,0,0" VerticalAlignment="Top" Width="129" Checked="Reme_Checked"/>
+            <Button x:Name="reg_a" Content="Создать аккаунт" HorizontalAlignment="Left" Height="40" Margin="0,170,0,0" VerticalAlignment="Top" Width="171" FontFamily="Times New Roman" FontSize="16" Background="#FF3BE2CB" Padding="0" BorderThickness="0" Click="Reg_a_Click"/>
+            <Grid x:Name="reg_panel" HorizontalAlignment="Left" Height="204" Margin="0,210,0,0" VerticalAlignment="Top" Width="171" Visibility="Hidden">
+                <TextBox x:Name="Login_Reg" GotFocus="Login_Reg_GotFocus" LostFocus="Login_Reg_LostFocus" HorizontalAlignment="Left" Height="25" Margin="0,34,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="171" FontFamily="Times New Roman" FontSize="16"/>
+                <TextBox x:Name="Name_Reg" HorizontalAlignment="Left" GotFocus="Name_Reg_GotFocus" LostFocus="Name_Reg_LostFocus" Height="25" Margin="0,64,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="171" FontFamily="Times New Roman" FontSize="16"/>
+                <PasswordBox x:Name="Password_Reg" HorizontalAlignment="Left" GotFocus="Password_Reg_GotFocus" LostFocus="Password_Reg_LostFocus" Height="25" Margin="0,94,0,0" VerticalAlignment="Top" Width="171" Password="Пароль" FontFamily="Times New Roman" FontSize="16"/>
+                <PasswordBox x:Name="Password_Repeat_Reg" HorizontalAlignment="Left" GotFocus="Password_Repeat_Reg_GotFocus" LostFocus="Password_Repeat_Reg_LostFocus" Height="25" Margin="0,124,0,0" VerticalAlignment="Top" Width="171" Password="Пароль" FontFamily="Times New Roman" FontSize="16"/>
+                <Button x:Name="registration" Content="Зарегистрироваться" HorizontalAlignment="Left" Height="40" Margin="0,154,0,0" VerticalAlignment="Top" Width="171" BorderThickness="0" Background="#FF3BE2CB" FontFamily="Times New Roman" FontSize="16" Click="Registration_Click"/>
+                <Label Content="Регистрация" HorizontalAlignment="Left" Height="29" Margin="35,0,0,0" VerticalAlignment="Top" Width="100" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold"/>
+            </Grid>
+            <Label Content="Вход" HorizontalAlignment="Left" Height="29" Margin="59,10,0,0" VerticalAlignment="Top" Width="80" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold"/>
         </Grid>
-        <Grid x:Name="hi" HorizontalAlignment="Left" Height="419" Margin="171,0,0,0" VerticalAlignment="Top" Width="621" Background="#FF6798C9">
+        <Grid x:Name="hi" HorizontalAlignment="Left" Height="419" Margin="171,0,0,0" VerticalAlignment="Top" Width="621" Background="#FF6798C9" Visibility="Hidden">
             <Image Margin="0,0,0,150" Source="Untitled.png" Stretch="Fill"/>
             <Image Margin="0,269,0,0" Source="Untitled1.png" Stretch="Fill"/>
         </Grid>
-        
+        <Grid x:Name="employee_screen" HorizontalAlignment="Left" Height="419" Margin="171,0,0,0" VerticalAlignment="Top" Width="621" Background="#FF78C4F0">
+            <TextBlock x:Name="L_Hi" Height="60" Margin="88,10,83,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20"/>
+        </Grid>
+        <Grid x:Name="control_panel_sotrudnik" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="171" Background="#FF3BE2CB">
+            <Label Content="Меню" Height="28" Margin="58,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold"/>
+            <Button x:Name="repair" Content="Заявка на ремонт" HorizontalAlignment="Left" Height="40" Margin="0,37,0,0" VerticalAlignment="Top" Width="171" FontFamily="Times New Roman" FontSize="16" Background="#FF3BE2CB" BorderThickness="0" Click="Repair_Click"/>
+            <Button x:Name="cartridge" Content="Замена картриджа" HorizontalAlignment="Left" Height="41" Margin="0,82,0,0" VerticalAlignment="Top" Width="171" BorderThickness="0" Background="#FF3BE2CB" FontFamily="Times New Roman" FontSize="16" Click="Cartridge_Click"/>
+            <Button x:Name="prog" Content="Установка программы" HorizontalAlignment="Left" Height="40" Margin="0,128,0,0" VerticalAlignment="Top" Width="171" FontFamily="Times New Roman" FontSize="16" Background="#FF3BE2CB" BorderThickness="0" Click="Prog_Click"/>
+            <Button x:Name="note" Content="Служебная записка" HorizontalAlignment="Left" Height="40" Margin="0,173,0,0" VerticalAlignment="Top" Width="171" BorderThickness="0" Background="#FF3BE2CB" FontFamily="Times New Roman" FontSize="16" Click="Note_Click"/>
+            <Button x:Name="exit" Content="Выход" HorizontalAlignment="Left" Height="40" Margin="0,379,0,0" VerticalAlignment="Top" Width="171" FontFamily="Times New Roman" FontSize="16" BorderThickness="0" Background="#FF3BE2CB" Click="Exit_Click"/>
+        </Grid>
+
 
     </Grid>
 </Window>

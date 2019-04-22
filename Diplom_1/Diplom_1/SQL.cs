@@ -48,5 +48,22 @@ namespace Diplom_1
             int num = comm.ExecuteNonQuery();
         }
 
+        public int Register_user(string[] Data)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Sql);
+                conn.Open();
+                SqlCommand comm = new SqlCommand("insert into Users(Логин, Пароль, Имя, Роль) values('" + Data[0] + "','" + Data[2] + "','" + Data[1] + "','" + Data[3] + "')", conn);
+                int num = comm.ExecuteNonQuery();
+                return num;
+            }
+            catch(SqlException)
+            {
+                int num = 0;
+                return num;
+            }
+        }
+
     }
 }
