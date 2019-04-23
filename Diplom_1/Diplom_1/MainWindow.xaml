@@ -29,6 +29,52 @@
         </Grid>
         <Grid x:Name="employee_screen" HorizontalAlignment="Left" Height="419" Margin="171,0,0,0" VerticalAlignment="Top" Width="621" Background="#FF78C4F0">
             <TextBlock x:Name="L_Hi" Height="60" Margin="88,10,83,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20"/>
+            <Grid x:Name="grid_repair" HorizontalAlignment="Left" Height="175" Margin="0,70,0,0" VerticalAlignment="Top" Width="621" Visibility="Hidden">
+                <ComboBox x:Name="repair_sp" HorizontalAlignment="Left" IsEditable="True" IsReadOnly="True" Text="     -Выбирите поломку-"  Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="200" FontFamily="Times New Roman" FontSize="16" SelectionChanged="Repair_sp_SelectionChanged" BorderThickness="0" Background="#FF3BE2CB" BorderBrush="#FF3BE2CB">
+                    <ComboBoxItem Content="Неработает интернет" Selected="ComboBoxItem_Selected_1"></ComboBoxItem>
+                    <ComboBoxItem Content="Неработает принтер" Selected="ComboBoxItem_Selected_2"></ComboBoxItem>
+                    <ComboBoxItem Content="Неработает программа" Selected="ComboBoxItem_Selected_3"></ComboBoxItem>
+                    <ComboBoxItem Content="Проблемы со звуком" Selected="ComboBoxItem_Selected_4"></ComboBoxItem>
+                    <ComboBoxItem Content="Проблемы с изображением" Selected="ComboBoxItem_Selected_5"></ComboBoxItem>
+                </ComboBox>
+                <Grid x:Name="grid_eth" HorizontalAlignment="Left" Height="135" Margin="0,40,0,0" VerticalAlignment="Top" Width="621" Visibility="Hidden">
+
+                    <RadioButton x:Name="_eth0" Content="Плохая скорость" HorizontalAlignment="Left" Height="23" Margin="65,22,0,0" VerticalAlignment="Top" Width="135" FontFamily="Times New Roman" FontSize="16" Checked="_eth0_Checked" Visibility="Visible"/>
+                    <RadioButton x:Name="_eth01" Content="Без доступа к интернету" HorizontalAlignment="Left" Height="18" Margin="65,68,0,0" VerticalAlignment="Top" Width="193" FontFamily="Times New Roman" FontSize="16" Checked="_eth01_Checked" Visibility="Visible"/>
+                    <Label x:Name="_eth02" Content="Вам стоит придти к нам лично, с уважением ЛИТ" HorizontalAlignment="Left" Height="32" Margin="65,103,0,0" VerticalAlignment="Top" Width="353" FontFamily="Times New Roman" FontSize="16" Visibility="Visible"/>
+                    <Button x:Name="create_r" Content="Отправить заявку" HorizontalAlignment="Left" Height="40" Margin="441,95,0,0" VerticalAlignment="Top" Width="180" Background="#FF78C4F0" BorderThickness="1" FontFamily="Times New Roman" FontSize="16" Click="Create_r_Click" Visibility="Visible"/>
+                    <Image Margin="19,5,556,90" Source="есть.png" Stretch="Fill"/>
+                    <Image Margin="19,45,556,49" Source="огрничено.png" Stretch="Fill"/>
+                    <Image Margin="19,86,556,10" Source="нет.png" Stretch="Fill"/>
+
+                </Grid>
+                <Grid x:Name="grid_print" HorizontalAlignment="Left" Height="135" Margin="10,40,0,0" VerticalAlignment="Top" Width="611" Visibility="Hidden">
+                    <Label Content="Внимание: заявку следует отправлять только если:&#xD;&#xA;-Принтер выдает ошибки&#xD;&#xA;-Ошибки при сканировании&#xD;&#xA;В случае если закончился картридж следует перейти&#xD;&#xA;в другой раздел &#xD;&#xA;---&#xD;&#xA;С уважением ЛИТ." HorizontalAlignment="Left" VerticalAlignment="Top" Height="125" Width="346"/>
+                    <Button x:Name="creaet_p" Content="Отправить заявку" HorizontalAlignment="Left" Margin="431,95,0,0" VerticalAlignment="Top" Width="180" Height="40" FontFamily="Times New Roman" FontSize="16" Background="#FF78C4F0" Click="Creaet_p_Click"/>
+
+                </Grid>
+                <Grid x:Name="grid_prog" HorizontalAlignment="Left" Height="135" Margin="0,40,0,0" VerticalAlignment="Top" Width="621" Visibility="Hidden">
+                    <Label Content="Если программа:&#xD;&#xA;-Не запускается&#xD;&#xA;-Работает неправильно&#xD;&#xA;-Требует активации&#xD;&#xA;Если вам надо установить программу, следует выбрать&#xD;&#xA;другой раздел.&#xD;&#xA;---&#xD;&#xA;С уважением ЛИТ." HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="135" Width="358"/>
+                    <Button x:Name="creat_prog" Content="Отправить заявку" HorizontalAlignment="Left" Height="40" Margin="441,95,0,0" VerticalAlignment="Top" Width="180" FontFamily="Times New Roman" FontSize="16" Background="#FF78C4F0" Click="Creat_prog_Click"/>
+                </Grid>
+                <Grid x:Name="grid_audio" HorizontalAlignment="Left" Height="135" Margin="0,40,0,0" VerticalAlignment="Top" Width="621" Visibility="Hidden">
+                    <Label Content="Если на вашем ПК\Ноутбуке&#xD;&#xA;-Неработают колонки&#xD;&#xA;-Неработает звук&#xD;&#xA;-Плохой звук" HorizontalAlignment="Left" Height="86" Margin="10,0,0,0" VerticalAlignment="Top" Width="279"/>
+                    <Button x:Name="create_zv" Content="Отправить заявку" HorizontalAlignment="Left" Margin="441,95,0,0" VerticalAlignment="Top" Width="180" Height="40" Background="#FF78C4F0" FontFamily="Times New Roman" FontSize="16" Click="Create_zv_Click"/>
+                </Grid>
+                <Grid x:Name="grid_im" HorizontalAlignment="Left" Height="135" Margin="0,40,0,0" VerticalAlignment="Top" Width="621" Visibility="Hidden">
+                    <Label Content="Проблемы с изображением:&#xD;&#xA;-Нет изображения на проекторе&#xD;&#xA;-Не четкое изображение&#xD;&#xA;-Не правильно разреение" HorizontalAlignment="Left" Height="91" VerticalAlignment="Top" Width="332"/>
+                    <Button x:Name="creat_im" Content="Отправить заявку" HorizontalAlignment="Left" Margin="441,95,0,0" VerticalAlignment="Top" Width="180" Height="40" Background="#FF78C4F0" FontFamily="Times New Roman" FontSize="16" Click="Creat_im_Click"/>
+                </Grid>
+
+            </Grid>
+            <Button x:Name="Suite" HorizontalAlignment="Left" Height="174" ToolTip="Сайт колледжа" Click="Suite_Click" Margin="0,245,0,0" VerticalAlignment="Top" Width="621" FontFamily="Times New Roman" FontSize="16" BorderThickness="0">
+                <Image Height="174" Source="Untitled.png" Stretch="Fill" Width="618"/>
+            </Button>
+            <Grid x:Name="zamena" HorizontalAlignment="Left" Height="164" Margin="0,81,0,0" VerticalAlignment="Top" Width="621" Visibility="Hidden">
+                <Label Content="Для быстрой замены картриджа &#xD;&#xA;укажите Название принтера/картриджа&#xD;&#xA;и нажмите &quot;Отправить заявку&quot;" HorizontalAlignment="Left" Height="62" Margin="10,0,0,0" VerticalAlignment="Top" Width="246"/>
+                <TextBox x:Name="name_cart" HorizontalAlignment="Left" GotFocus="Name_cart_GotFocus" LostFocus="Name_cart_LostFocus" Height="25"  Margin="10,62,0,0" TextWrapping="Wrap" Text="Название принтера/картриджа" VerticalAlignment="Top" Width="230" FontFamily="Times New Roman" FontSize="16"/>
+                <Button x:Name="creat_zamena" Content="Отправить заявку" HorizontalAlignment="Left" Margin="441,124,0,0" VerticalAlignment="Top" Width="180" Height="40" Background="#FF78C4F0" FontFamily="Times New Roman" FontSize="16" Click="Creat_zamena_Click"/>
+            </Grid>
         </Grid>
         <Grid x:Name="control_panel_sotrudnik" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="171" Background="#FF3BE2CB">
             <Label Content="Меню" Height="28" Margin="58,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold"/>

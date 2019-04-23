@@ -183,12 +183,13 @@ namespace Diplom_1
 
         private void Repair_Click(object sender, RoutedEventArgs e)
         {
-
+            grid_repair.Visibility = Visibility.Visible;
         }
 
         private void Cartridge_Click(object sender, RoutedEventArgs e)
         {
-
+            grid_repair.Visibility = Visibility.Hidden;
+            zamena.Visibility = Visibility.Visible;
         }
 
         private void Note_Click(object sender, RoutedEventArgs e)
@@ -197,6 +198,113 @@ namespace Diplom_1
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Repair_sp_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void Suite_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://zabgc.ru/");
+        }
+
+        private void _eth0_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void _eth01_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Create_r_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        
+
+        private void ComboBoxItem_Selected_1(object sender, RoutedEventArgs e)
+        {
+            grid_eth.Visibility = Visibility.Visible;
+            grid_print.Visibility = Visibility.Hidden;
+            grid_prog.Visibility = Visibility.Hidden;
+            grid_audio.Visibility = Visibility.Hidden;
+            grid_im.Visibility = Visibility.Hidden;
+        }
+
+        private void ComboBoxItem_Selected_2(object sender, RoutedEventArgs e)
+        {
+            grid_eth.Visibility = Visibility.Hidden;
+            grid_print.Visibility = Visibility.Visible;
+            grid_prog.Visibility = Visibility.Hidden;
+            grid_im.Visibility = Visibility.Hidden;
+            grid_audio.Visibility = Visibility.Hidden;
+        }
+
+        private void ComboBoxItem_Selected_3(object sender, RoutedEventArgs e)
+        {
+            grid_eth.Visibility = Visibility.Hidden;
+            grid_im.Visibility = Visibility.Hidden;
+            grid_print.Visibility = Visibility.Hidden;
+            grid_prog.Visibility = Visibility.Visible;
+            grid_audio.Visibility = Visibility.Hidden;
+        }
+
+        private void ComboBoxItem_Selected_4(object sender, RoutedEventArgs e)
+        {
+            grid_im.Visibility = Visibility.Hidden;
+            grid_eth.Visibility = Visibility.Hidden;
+            grid_print.Visibility = Visibility.Hidden;
+            grid_prog.Visibility = Visibility.Hidden;
+            grid_audio.Visibility = Visibility.Visible;
+        }
+
+        private void ComboBoxItem_Selected_5(object sender, RoutedEventArgs e)
+        {
+            grid_eth.Visibility = Visibility.Hidden;
+            grid_print.Visibility = Visibility.Hidden;
+            grid_prog.Visibility = Visibility.Hidden;
+            grid_audio.Visibility = Visibility.Hidden;
+            grid_im.Visibility = Visibility.Visible;
+        }
+
+        private void Creaet_p_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Creat_prog_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Create_zv_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Creat_im_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Name_cart_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (name_cart.Text == "Название принтера/картриджа") name_cart.Text = "";
+        }
+
+        private void Name_cart_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (name_cart.Text == "") name_cart.Text = "Название принтера/картриджа";
+        }
+
+        private void Creat_zamena_Click(object sender, RoutedEventArgs e)
         {
 
         }
