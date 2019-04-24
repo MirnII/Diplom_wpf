@@ -178,28 +178,42 @@ namespace Diplom_1
 
         private void Prog_Click(object sender, RoutedEventArgs e)
         {
-
+            grid_install.Visibility = Visibility.Visible;
+            grid_repair.Visibility = Visibility.Hidden;
+            zamena.Visibility = Visibility.Hidden;
+            grid_mer.Visibility = Visibility.Hidden;
         }
 
         private void Repair_Click(object sender, RoutedEventArgs e)
         {
             grid_repair.Visibility = Visibility.Visible;
+            grid_install.Visibility = Visibility.Hidden;
+            grid_mer.Visibility = Visibility.Hidden;
+            zamena.Visibility = Visibility.Hidden;
         }
 
         private void Cartridge_Click(object sender, RoutedEventArgs e)
         {
             grid_repair.Visibility = Visibility.Hidden;
             zamena.Visibility = Visibility.Visible;
+            grid_install.Visibility = Visibility.Hidden;
+            grid_mer.Visibility = Visibility.Hidden;
         }
 
         private void Note_Click(object sender, RoutedEventArgs e)
         {
-
+            grid_repair.Visibility = Visibility.Hidden;
+            zamena.Visibility = Visibility.Hidden;
+            grid_install.Visibility = Visibility.Hidden;
+            grid_mer.Visibility = Visibility.Visible;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-
+            control_panel_sotrudnik.Visibility = Visibility.Hidden;
+            employee_screen.Visibility = Visibility.Hidden;
+            hi.Visibility = Visibility.Visible;
+            Control_p.Visibility = Visibility.Visible;
         }
 
         private void Repair_sp_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -307,6 +321,51 @@ namespace Diplom_1
         private void Creat_zamena_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Name_install_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (name_install.Text == "Название программы") name_install.Text = "";
+        }
+
+        private void Name_install_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (name_install.Text == "") name_install.Text = "Название программы";
+        }
+
+        private void Create_install_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Name_mer_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (name_mer.Text == "Название мероприятия") name_mer.Text = "";
+        }
+
+        private void Name_mer_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (name_mer.Text == "") name_mer.Text = "Название мероприятия";
+        }
+
+        private void Sv_mer_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (sv_mer.Text == "Описание") sv_mer.Text = "";
+        }
+
+        private void Sv_mer_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (sv_mer.Text == "") sv_mer.Text = "Описание";
+        }
+
+        private void Date_mer_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (date_mer.Text == "Дата/время") date_mer.Text = "";
+        }
+
+        private void Date_mer_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (date_mer.Text == "") date_mer.Text = "Дата/время";
         }
     }
 }
