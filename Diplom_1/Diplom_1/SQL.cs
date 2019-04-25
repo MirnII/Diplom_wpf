@@ -34,11 +34,43 @@ namespace Diplom_1
                 }
                 else
                 {
-                    status_cod = 01;
+                    status_cod = 11;
                 }
             }
 
             return status_cod;
+        }
+
+        public bool connect_status()
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Sql);
+                conn.Open();
+                conn.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public int repair_(string kat, string log, string kab)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Sql);
+                conn.Open();
+                SqlCommand comm = new SqlCommand("Insert into repair(Категория, ПК, Логин, Дата, Кабинет, Уч_зп, Статус) values ('" + kat + "', '" + Environment.MachineName + "', '" + log + "', '" + DateTime.Now + "', '" + kab+ "', '" + Environment.UserName + "', 'Новая')", conn);
+                int status = comm.ExecuteNonQuery();
+                return status;
+            }
+            catch
+            {
+                int status = 0;
+                return status;
+            }
         }
         public void cookie_(string Login, string Password, string Roly_, string Name_)
         {
@@ -62,6 +94,41 @@ namespace Diplom_1
             {
                 int num = 0;
                 return num;
+            }
+        }
+
+        public int zamena(string Cart, string Login, string kab)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Sql);
+                conn.Open();
+                SqlCommand comm = new SqlCommand("insert into repair(Категория, Картридж, ПК, " +
+                    "Уч_зп, Кабинет, Логин, Статус, Дата)" +
+                    " values('Замена картриджа', '" + Cart + "', '" + Environment.MachineName + "', " +
+                    "'" + Environment.UserName + "', '" + kab + "', '" + Login + "', 'Новая', '" + DateTime.Now + "')", conn);
+                return comm.ExecuteNonQuery();
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+        public int install(string Login, string Name, string kab)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Sql);
+                conn.Open();
+                SqlCommand comm = new SqlCommand("insert into repair(Категория, Программа, ПК, " +
+                    "Уч_зп, Кабинет, Логин, Статус, Дата)" +
+                    "values('Установка программы', '" + Name + "', '" + Environment.MachineName + "', " +
+                    "'" + Environment.UserName + "', '" + kab + "', '" + Login + "', 'Новая', '" + DateTime.Now + "')", conn);
+                return comm.ExecuteNonQuery();
+            }
+            catch
+            {
+                return 0;
             }
         }
 

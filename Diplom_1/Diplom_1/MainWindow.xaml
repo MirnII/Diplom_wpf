@@ -28,7 +28,7 @@
             <Image Margin="0,269,0,0" Source="Untitled1.png" Stretch="Fill"/>
         </Grid>
         <Grid x:Name="employee_screen" HorizontalAlignment="Left" Height="419" Margin="171,0,0,0" VerticalAlignment="Top" Width="621" Background="#FF78C4F0">
-            <TextBlock x:Name="L_Hi" Height="60" Margin="91,0,80,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20"/>
+            <TextBlock x:Name="L_Hi" Height="60" Margin="145,0,26,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="20"/>
             <Grid x:Name="grid_repair" HorizontalAlignment="Left" Height="175" Margin="0,70,0,0" VerticalAlignment="Top" Width="621" Visibility="Hidden">
                 <ComboBox x:Name="repair_sp" HorizontalAlignment="Left" IsEditable="True" IsReadOnly="True" Text="     -Выбирите поломку-"  Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="200" FontFamily="Times New Roman" FontSize="16" SelectionChanged="Repair_sp_SelectionChanged" BorderThickness="0" Background="#FF3BE2CB" BorderBrush="#FF3BE2CB">
                     <ComboBoxItem Content="Неработает интернет" Selected="ComboBoxItem_Selected_1"></ComboBoxItem>
@@ -65,6 +65,7 @@
                     <Label Content="Проблемы с изображением:&#xD;&#xA;-Нет изображения на проекторе&#xD;&#xA;-Не четкое изображение&#xD;&#xA;-Не правильно разреение" HorizontalAlignment="Left" Height="91" VerticalAlignment="Top" Width="332"/>
                     <Button x:Name="creat_im" Content="Отправить заявку" HorizontalAlignment="Left" Margin="441,95,0,0" VerticalAlignment="Top" Width="180" Height="40" Background="#FF78C4F0" FontFamily="Times New Roman" FontSize="16" Click="Creat_im_Click"/>
                 </Grid>
+                <TextBox x:Name="kab" HorizontalAlignment="Left" GotFocus="Kab_GotFocus" LostFocus="Kab_LostFocus" Height="25" Margin="215,10,0,0" TextWrapping="Wrap" Text="№ Кабинета" VerticalAlignment="Top" Width="120" FontFamily="Times New Roman" FontSize="16" TextChanged="Kab_TextChanged"/>
 
             </Grid>
             <Button x:Name="Suite" HorizontalAlignment="Left" Height="174" ToolTip="Сайт колледжа" Click="Suite_Click" Margin="0,245,0,0" VerticalAlignment="Top" Width="621" FontFamily="Times New Roman" FontSize="16" BorderThickness="0">
@@ -74,11 +75,13 @@
                 <Label Content="Для быстрой замены картриджа &#xD;&#xA;укажите Название принтера/картриджа&#xD;&#xA;и нажмите &quot;Отправить заявку&quot;" HorizontalAlignment="Left" Height="62" Margin="10,0,0,0" VerticalAlignment="Top" Width="246"/>
                 <TextBox x:Name="name_cart" HorizontalAlignment="Left" GotFocus="Name_cart_GotFocus" LostFocus="Name_cart_LostFocus" Height="25"  Margin="10,62,0,0" TextWrapping="Wrap" Text="Название принтера/картриджа" VerticalAlignment="Top" Width="230" FontFamily="Times New Roman" FontSize="16"/>
                 <Button x:Name="creat_zamena" Content="Отправить заявку" HorizontalAlignment="Left" Margin="441,124,0,0" VerticalAlignment="Top" Width="180" Height="40" Background="#FF78C4F0" FontFamily="Times New Roman" FontSize="16" Click="Creat_zamena_Click"/>
+                <TextBox x:Name="Kab_cart" GotFocus="Kab_cart_GotFocus"  LostFocus="Kab_cart_LostFocus" HorizontalAlignment="Left" Height="25" Margin="255,62,0,0" TextWrapping="Wrap" Text="№ Кабинета" VerticalAlignment="Top" Width="100" FontFamily="Times New Roman" FontSize="16"/>
             </Grid>
-            <Grid x:Name="grid_install" HorizontalAlignment="Left" Height="156" Margin="0,89,0,0" VerticalAlignment="Top" Width="621" Visibility="Hidden">
-                <Label Content="Если вы  хотите чтобы вам усановили программу:&#xD;&#xA;-Напишите название программы&#xD;&#xA;И в ближейшее время к вам приет техник и установит&#xD;&#xA;программу." HorizontalAlignment="Left" Height="89" VerticalAlignment="Top" Width="335" Margin="10,0,0,0"/>
-                <TextBox x:Name="name_install" GotFocus="Name_install_GotFocus" LostFocus="Name_install_LostFocus" HorizontalAlignment="Left" Height="25" Margin="10,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304" FontFamily="Times New Roman" FontSize="16" Text="Название программы"/>
+            <Grid x:Name="grid_install" HorizontalAlignment="Left" Height="156" Margin="0,89,0,0" VerticalAlignment="Top" Width="621" Visibility="Visible">
+                <Label Content="Если вы  хотите чтобы вам усановили программу:&#xD;&#xA;-Напишите название программы&#xD;&#xA;И в ближейшее время к вам приет техник и установит&#xD;&#xA;программу." HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="335" Margin="10,0,0,0"/>
+                <TextBox x:Name="name_install" GotFocus="Name_install_GotFocus" LostFocus="Name_install_LostFocus" HorizontalAlignment="Left" Height="25" Margin="10,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304" FontFamily="Times New Roman" FontSize="16" Text="Название программы"/>
                 <Button x:Name="create_install" Content="Отправить заявку" HorizontalAlignment="Left" Height="40" Margin="441,116,0,0" VerticalAlignment="Top" Width="180" Background="#FF78C4F0" FontFamily="Times New Roman" FontSize="16" Click="Create_install_Click"/>
+                <TextBox x:Name="kab_inst" HorizontalAlignment="Left" GotFocus="Kab_inst_GotFocus" LostFocus="Kab_inst_LostFocus" Height="25" Margin="319,78,0,0" TextWrapping="Wrap" Text="№ Кабинета" VerticalAlignment="Top" Width="100" FontFamily="Times New Roman" FontSize="16"/>
             </Grid>
             <Grid x:Name="grid_mer" HorizontalAlignment="Left" Height="180" Margin="0,65,0,0" VerticalAlignment="Top" Width="621" Visibility="Hidden">
                 <Label Content="Для того чтобы оформить заявку на мероприятие:&#xD;&#xA;-Указать название мерприятия&#xD;&#xA;-Добавить описание мероприятия&#xD;&#xA;-Указать дату мероприятия" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="78" Width="367"/>
