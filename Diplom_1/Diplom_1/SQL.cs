@@ -62,7 +62,9 @@ namespace Diplom_1
             {
                 SqlConnection conn = new SqlConnection(Sql);
                 conn.Open();
-                SqlCommand comm = new SqlCommand("Insert into repair(Категория, ПК, Логин, Дата, Кабинет, Уч_зп, Статус) values ('" + kat + "', '" + Environment.MachineName + "', '" + log + "', '" + DateTime.Now + "', '" + kab+ "', '" + Environment.UserName + "', 'Новая')", conn);
+                SqlCommand comm = new SqlCommand("Insert into repair(Категория, Программа, Картридж, ПК, Логин, Дата, Кабинет, Уч_зп, Статус, Техник) " +
+                    "values ('" + kat + "', '-', '-', '" + Environment.MachineName + "', '" + log + "', '" + DateTime.Now + "', '" + kab+ "', " +
+                    "'" + Environment.UserName + "', 'Новая', '-')", conn);
                 int status = comm.ExecuteNonQuery();
                 return status;
             }
@@ -103,9 +105,9 @@ namespace Diplom_1
             {
                 SqlConnection conn = new SqlConnection(Sql);
                 conn.Open();
-                SqlCommand comm = new SqlCommand("insert into repair(Категория, Картридж, ПК, " +
+                SqlCommand comm = new SqlCommand("insert into repair(Категория, Программа, Картридж, ПК, " +
                     "Уч_зп, Кабинет, Логин, Статус, Дата)" +
-                    " values('Замена картриджа', '" + Cart + "', '" + Environment.MachineName + "', " +
+                    " values('Замена картриджа', '-', '" + Cart + "', '" + Environment.MachineName + "', " +
                     "'" + Environment.UserName + "', '" + kab + "', '" + Login + "', 'Новая', '" + DateTime.Now + "')", conn);
                 return comm.ExecuteNonQuery();
             }
@@ -120,10 +122,10 @@ namespace Diplom_1
             {
                 SqlConnection conn = new SqlConnection(Sql);
                 conn.Open();
-                SqlCommand comm = new SqlCommand("insert into repair(Категория, Программа, ПК, " +
-                    "Уч_зп, Кабинет, Логин, Статус, Дата)" +
-                    "values('Установка программы', '" + Name + "', '" + Environment.MachineName + "', " +
-                    "'" + Environment.UserName + "', '" + kab + "', '" + Login + "', 'Новая', '" + DateTime.Now + "')", conn);
+                SqlCommand comm = new SqlCommand("insert into repair(Категория, Программа, Картридж, ПК, " +
+                    "Уч_зп, Кабинет, Логин, Статус, Дата, Техник)" +
+                    "values('Установка программы', '" + Name + "', '-', '" + Environment.MachineName + "', " +
+                    "'" + Environment.UserName + "', '" + kab + "', '" + Login + "', 'Новая', '" + DateTime.Now + "', '-')", conn);
                 return comm.ExecuteNonQuery();
             }
             catch
@@ -132,5 +134,21 @@ namespace Diplom_1
             }
         }
 
+        public int Mer(string name, string sv, string date, string Name)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(Sql);
+                conn.Open();
+                SqlCommand comm = new SqlCommand("insert into mer(Имя, Описание, Дата_пров, Ответственный, Статус, Техник)" +
+                    " values('" + name + "', '" + sv + "', '" + date + "', '" + Name + "', 'Новое', '-')", conn);
+                return comm.ExecuteNonQuery();
+            }
+            catch
+            {
+                return 0;
+            }
+
+        }
     }
 }

@@ -68,7 +68,7 @@
                 <TextBox x:Name="kab" HorizontalAlignment="Left" GotFocus="Kab_GotFocus" LostFocus="Kab_LostFocus" Height="25" Margin="215,10,0,0" TextWrapping="Wrap" Text="№ Кабинета" VerticalAlignment="Top" Width="120" FontFamily="Times New Roman" FontSize="16" TextChanged="Kab_TextChanged"/>
 
             </Grid>
-            <Button x:Name="Suite" HorizontalAlignment="Left" Height="174" ToolTip="Сайт колледжа" Click="Suite_Click" Margin="0,245,0,0" VerticalAlignment="Top" Width="621" FontFamily="Times New Roman" FontSize="16" BorderThickness="0">
+            <Button x:Name="Suite" HorizontalAlignment="Left" Height="174" ToolTip="Сайт колледжа" Click="Suite_Click" Margin="0,245,0,0" VerticalAlignment="Top" Width="621" FontFamily="Times New Roman" FontSize="16" BorderThickness="0" Visibility="Hidden">
                 <Image Height="174" Source="Untitled.png" Stretch="Fill" Width="618"/>
             </Button>
             <Grid x:Name="zamena" HorizontalAlignment="Left" Height="164" Margin="0,81,0,0" VerticalAlignment="Top" Width="621" Visibility="Hidden">
@@ -77,7 +77,7 @@
                 <Button x:Name="creat_zamena" Content="Отправить заявку" HorizontalAlignment="Left" Margin="441,124,0,0" VerticalAlignment="Top" Width="180" Height="40" Background="#FF78C4F0" FontFamily="Times New Roman" FontSize="16" Click="Creat_zamena_Click"/>
                 <TextBox x:Name="Kab_cart" GotFocus="Kab_cart_GotFocus"  LostFocus="Kab_cart_LostFocus" HorizontalAlignment="Left" Height="25" Margin="255,62,0,0" TextWrapping="Wrap" Text="№ Кабинета" VerticalAlignment="Top" Width="100" FontFamily="Times New Roman" FontSize="16"/>
             </Grid>
-            <Grid x:Name="grid_install" HorizontalAlignment="Left" Height="156" Margin="0,89,0,0" VerticalAlignment="Top" Width="621" Visibility="Visible">
+            <Grid x:Name="grid_install" HorizontalAlignment="Left" Height="156" Margin="0,89,0,0" VerticalAlignment="Top" Width="621" Visibility="Hidden">
                 <Label Content="Если вы  хотите чтобы вам усановили программу:&#xD;&#xA;-Напишите название программы&#xD;&#xA;И в ближейшее время к вам приет техник и установит&#xD;&#xA;программу." HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="335" Margin="10,0,0,0"/>
                 <TextBox x:Name="name_install" GotFocus="Name_install_GotFocus" LostFocus="Name_install_LostFocus" HorizontalAlignment="Left" Height="25" Margin="10,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="304" FontFamily="Times New Roman" FontSize="16" Text="Название программы"/>
                 <Button x:Name="create_install" Content="Отправить заявку" HorizontalAlignment="Left" Height="40" Margin="441,116,0,0" VerticalAlignment="Top" Width="180" Background="#FF78C4F0" FontFamily="Times New Roman" FontSize="16" Click="Create_install_Click"/>
@@ -87,9 +87,24 @@
                 <Label Content="Для того чтобы оформить заявку на мероприятие:&#xD;&#xA;-Указать название мерприятия&#xD;&#xA;-Добавить описание мероприятия&#xD;&#xA;-Указать дату мероприятия" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="78" Width="367"/>
                 <TextBox x:Name="name_mer" GotFocus="Name_mer_GotFocus" LostFocus="Name_mer_LostFocus"  HorizontalAlignment="Left" Height="25" Margin="10,88,0,0" TextWrapping="Wrap" Text="Название мероприятия" VerticalAlignment="Top" Width="320" FontFamily="Times New Roman" FontSize="16"/>
                 <TextBox x:Name="sv_mer" GotFocus="Sv_mer_GotFocus" LostFocus="Sv_mer_LostFocus" HorizontalAlignment="Left" Height="67" Margin="10,113,0,0" TextWrapping="Wrap" Text="Описание" VerticalAlignment="Top" Width="432" FontFamily="Times New Roman" FontSize="14"/>
-                <Button x:Name="create_mer" Content="Отправить заявку" HorizontalAlignment="Left" Height="40" Margin="442,140,0,0" VerticalAlignment="Top" Width="179" FontFamily="Times New Roman" FontSize="16" Background="#FF78C4F0"/>
-                <TextBox x:Name="date_mer" GotFocus="Date_mer_GotFocus" LostFocus="Date_mer_LostFocus" HorizontalAlignment="Left" Height="25" Margin="330,88,0,0" TextWrapping="Wrap" Text="Дата/время" VerticalAlignment="Top" Width="112" FontFamily="Times New Roman" FontSize="16"/>
+                <Button x:Name="create_mer" Content="Отправить заявку" HorizontalAlignment="Left" Height="40" Margin="442,140,0,0" VerticalAlignment="Top" Width="179" FontFamily="Times New Roman" Click="Create_mer_Click" FontSize="16" Background="#FF78C4F0"/>
+                <TextBox x:Name="date_mer"  GotFocus="Date_mer_GotFocus" LostFocus="Date_mer_LostFocus" TextChanged="Date_mer_TextChangedEventHandler" HorizontalAlignment="Left" Height="25" Margin="330,88,0,0" TextWrapping="Wrap" Text="Дата/время" VerticalAlignment="Top" Width="112" FontFamily="Times New Roman" FontSize="16" ToolTip="00.00.0000 00:00:00"/>
             </Grid>
+            <TabControl x:Name="zav_" HorizontalAlignment="Left" Height="355" Margin="5,54,0,0" VerticalAlignment="Top" Width="606">
+                <TabItem Header="Ремонт, Картридж, Программы">
+                    <Grid Background="#FFE5E5E5" Margin="0,0,0,-4">
+                        <DataGrid x:Name="datagrid_rzi" HorizontalAlignment="Left" Height="251" VerticalAlignment="Top" Width="534" Margin="0,37,0,0"/>
+                        <TextBox HorizontalAlignment="Left" Height="25" Margin="150,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+                        <ComboBox HorizontalAlignment="Left" Height="25" Margin="0,12,0,0" VerticalAlignment="Top" Width="150"/>
+                        <TextBox HorizontalAlignment="Left" Height="25" Margin="278,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+                        <TextBox HorizontalAlignment="Left" Height="25" Margin="406,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Мероприятия">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+
+            </TabControl>
         </Grid>
         <Grid x:Name="control_panel_sotrudnik" HorizontalAlignment="Left" Height="419" VerticalAlignment="Top" Width="171" Background="#FF3BE2CB">
             <Label Content="Меню" Height="28" Margin="58,0" VerticalAlignment="Top" FontFamily="Times New Roman" FontSize="16" FontWeight="Bold"/>
@@ -97,7 +112,8 @@
             <Button x:Name="cartridge" Content="Замена картриджа" HorizontalAlignment="Left" Height="41" Margin="0,82,0,0" VerticalAlignment="Top" Width="171" BorderThickness="0" Background="#FF3BE2CB" FontFamily="Times New Roman" FontSize="16" Click="Cartridge_Click"/>
             <Button x:Name="prog" Content="Установка программы" HorizontalAlignment="Left" Height="40" Margin="0,128,0,0" VerticalAlignment="Top" Width="171" FontFamily="Times New Roman" FontSize="16" Background="#FF3BE2CB" BorderThickness="0" Click="Prog_Click"/>
             <Button x:Name="note" Content="Заявка на мероприятие" HorizontalAlignment="Left" Height="40" Margin="0,173,0,0" VerticalAlignment="Top" Width="171" BorderThickness="0" Background="#FF3BE2CB" FontFamily="Times New Roman" FontSize="16" Click="Note_Click"/>
-            <Button x:Name="exit" Content="Выход" HorizontalAlignment="Left" Height="40" Margin="0,379,0,0" VerticalAlignment="Top" Width="171" FontFamily="Times New Roman" FontSize="16" BorderThickness="0" Background="#FF3BE2CB" Click="Exit_Click"/>
+            <Button x:Name="exit" Content="Выход" HorizontalAlignment="Left" Height="40" Margin="0,369,0,0" VerticalAlignment="Top" Width="171" FontFamily="Times New Roman" FontSize="16" BorderThickness="0" Background="#FF3BE2CB" Click="Exit_Click"/>
+            <Button x:Name="zav" Content="Заявки" HorizontalAlignment="Left" Height="39" Margin="0,218,0,0" VerticalAlignment="Top" Width="171" FontFamily="Times New Roman" FontSize="16" Background="#FF3BE2CB" BorderThickness="0" Click="Zav_Click"/>
         </Grid>
 
 
