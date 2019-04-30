@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,6 +29,7 @@ namespace Diplom_1
         string roly { get; set; }
         string Login_="q";
         int status_cod;
+        int zav_grid;
         private void Login_Click(object sender, RoutedEventArgs e)
         {
             Login_ = Log.Text;
@@ -179,38 +181,53 @@ namespace Diplom_1
         }     
         private void Prog_Click(object sender, RoutedEventArgs e)
         {
+            win.Width = 800;
             grid_install.Visibility = Visibility.Visible;
             grid_repair.Visibility = Visibility.Hidden;
             zamena.Visibility = Visibility.Hidden;
             grid_mer.Visibility = Visibility.Hidden;
+            zav_.Visibility = Visibility.Hidden;
+            Suite.Visibility = Visibility.Visible;
         }
         private void Repair_Click(object sender, RoutedEventArgs e)
         {
+            win.Width = 800;
             grid_repair.Visibility = Visibility.Visible;
             grid_install.Visibility = Visibility.Hidden;
             grid_mer.Visibility = Visibility.Hidden;
             zamena.Visibility = Visibility.Hidden;
+            zav_.Visibility = Visibility.Hidden;
+            Suite.Visibility = Visibility.Visible;
         }
         private void Cartridge_Click(object sender, RoutedEventArgs e)
         {
+            win.Width = 800;
             grid_repair.Visibility = Visibility.Hidden;
             zamena.Visibility = Visibility.Visible;
             grid_install.Visibility = Visibility.Hidden;
             grid_mer.Visibility = Visibility.Hidden;
+            zav_.Visibility = Visibility.Hidden;
+            Suite.Visibility = Visibility.Visible;
         }
         private void Note_Click(object sender, RoutedEventArgs e)
         {
+            win.Width = 800;
             grid_repair.Visibility = Visibility.Hidden;
             zamena.Visibility = Visibility.Hidden;
             grid_install.Visibility = Visibility.Hidden;
             grid_mer.Visibility = Visibility.Visible;
+            zav_.Visibility = Visibility.Hidden;
+            Suite.Visibility = Visibility.Visible;
         }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
+            win.Width = 800;
             control_panel_sotrudnik.Visibility = Visibility.Hidden;
             employee_screen.Visibility = Visibility.Hidden;
             hi.Visibility = Visibility.Visible;
             Control_p.Visibility = Visibility.Visible;
+            zav_.Visibility = Visibility.Hidden;
+            Suite.Visibility = Visibility.Visible;
         }
         private void Repair_sp_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -444,7 +461,7 @@ namespace Diplom_1
                 SQL s = new SQL();
                 if (s.connect_status() == true)
                 {
-                    if (s.Mer(name_mer.Text, sv_mer.Text, date_mer.Text, name) == 1) MessageBox.Show("Ваша заявка принята на рассмотрение");
+                    if (s.Mer(name_mer.Text, Login_, sv_mer.Text, date_mer.Text, name) == 1) MessageBox.Show("Ваша заявка принята на рассмотрение");
                     else MessageBox.Show("Ошибка подачи заявки");
                 }
                 else MessageBox.Show("Нет связи с сервером");
@@ -456,9 +473,205 @@ namespace Diplom_1
             
         }
 
-        private void Zav_Click(object sender, RoutedEventArgs e)
+        public void Zav_Click(object sender, RoutedEventArgs e)
+        {
+            Suite.Visibility = Visibility.Hidden;
+            grid_install.Visibility = Visibility.Hidden;
+            grid_repair.Visibility = Visibility.Hidden;
+            zamena.Visibility = Visibility.Hidden;
+            grid_mer.Visibility = Visibility.Hidden;
+            zav_.Visibility = Visibility.Visible;
+            win.Width = 939;
+            employee_screen.Width = 760;
+            zav_.Width = 760;
+            datagrid_rzi.Width = 752;
+            zav_grid = 1;
+            SQL s = new SQL();
+            if (s.connect_status() == true)
+            {
+                s.sp_ZAV(Login_, this);
+                s.sp_Mer(Login_, this);
+            }
+            else MessageBox.Show("Нет связи с сервером");
+        }
+
+        private void Prog_sp_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (zav_grid == 1)
+            {
+                SQL s = new SQL();
+                if (s.connect_status() == true)
+                {
+                    if (prog_sp.Text == "Программа") s.sp_ZAV(Login_, this);
+                    if (prog_sp.Text != "Программа") s.sp_ZAV(Login_, prog_sp.Text, cart_sp.Text, kab_sp.Text, "Установка программы", this);
+                }
+                else MessageBox.Show("Нет связи с сервером");
+            }
+        }
+
+        private void Cart_sp_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (zav_grid == 1)
+            {
+                SQL s = new SQL();
+                if (s.connect_status() == true)
+                {
+                    if (cart_sp.Text == "Картридж") s.sp_ZAV(Login_, this);
+                    if (cart_sp.Text != "Картридж") s.sp_ZAV(Login_, prog_sp.Text, cart_sp.Text, kab_sp.Text, "Замена картриджа", this);
+                }
+                else MessageBox.Show("Нет связи с сервером");
+            }
+        }
+
+        private void Kab_sp_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (zav_grid == 1)
+            {
+                SQL s = new SQL();
+                if (s.connect_status() == true)
+                {
+                    if (kab_sp.Text == "Кабинет") s.sp_ZAV(Login_, this);
+                    if (kab_sp.Text != "Кабинет") s.sp_ZAV(Login_, prog_sp.Text, cart_sp.Text, kab_sp.Text, "", this);
+                }
+                else MessageBox.Show("Нет связи с сервером");
+            }
+        }
+
+        private void Kat_sp_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void kat_sp1(object sender, RoutedEventArgs e)
+        {
+            SQL s = new SQL();
+            if(s.connect_status() == true) s.sp_ZAV(Login_, "Неработает интернет", this);
+            else MessageBox.Show("Нет связи с сервером");
+        }
+
+        private void kat_sp2(object sender, RoutedEventArgs e)
+        {
+            SQL s = new SQL();
+            if (s.connect_status() == true) s.sp_ZAV(Login_, "Неработает принтер", this);
+            else MessageBox.Show("Нет связи с сервером");
+        }
+
+        private void kat_sp3(object sender, RoutedEventArgs e)
+        {
+            SQL s = new SQL();
+            if (s.connect_status() == true) s.sp_ZAV(Login_, "Неработает программа", this);
+            else MessageBox.Show("Нет связи с сервером");
+        }
+
+        private void kat_sp4(object sender, RoutedEventArgs e)
+        {
+            SQL s = new SQL();
+            if (s.connect_status() == true) s.sp_ZAV(Login_, "Проблемы со звуком", this);
+            else MessageBox.Show("Нет связи с сервером");
+        }
+
+        private void kat_sp5(object sender, RoutedEventArgs e)
+        {
+            SQL s = new SQL();
+            if (s.connect_status() == true) s.sp_ZAV(Login_, "Проблемы с изображением", this);
+            else MessageBox.Show("Нет связи с сервером");
+        }
+
+        private void kat_sp6(object sender, RoutedEventArgs e)
+        {
+            SQL s = new SQL();
+            if (s.connect_status() == true) s.sp_ZAV(Login_, "Замена картриджа", this);
+            else MessageBox.Show("Нет связи с сервером");
+        }
+
+        private void kat_sp7(object sender, RoutedEventArgs e)
+        {
+            SQL s = new SQL();
+            if (s.connect_status() == true) s.sp_ZAV(Login_, "Установка программы", this);
+            else MessageBox.Show("Нет связи с сервером");
+        }
+
+        private void kat_sp0(object sender, RoutedEventArgs e)
+        {
+            SQL s = new SQL();
+            if (s.connect_status() == true) s.sp_ZAV(Login_, this);
+            else MessageBox.Show("Нет связи с сервером");
+        }
+
+        private void Prog_sp_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (prog_sp.Text == "Программа") prog_sp.Text = "";
+            if (cart_sp.Text != "Картридж") cart_sp.Text = "Картридж";
+        }
+
+        private void Prog_sp_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (prog_sp.Text == "") prog_sp.Text = "Программа";
+        }
+
+        private void Cart_sp_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (cart_sp.Text == "Картридж") cart_sp.Text = "";
+            if (prog_sp.Text != "Программа") prog_sp.Text = "Программа";
+        }
+
+        private void Cart_sp_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (cart_sp.Text == "") cart_sp.Text = "Картридж";
+        }
+
+        private void Kab_sp_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (kab_sp.Text == "Кабинет") kab_sp.Text = "";
+        }
+
+        private void Kab_sp_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (kab_sp.Text == "") kab_sp.Text = "Кабинет";
+        }
+
+        private void Cansel_Click(object sender, RoutedEventArgs e)
+        {
+            string status_z;
+            if (datagrid_rzi.SelectedItems.Count == 0) return;
+            status_z = ((DataRowView)datagrid_rzi.SelectedItems[0]).Row["Статус"].ToString();
+            if (status_z == "Открыта" | status_z == "") MessageBox.Show("Заявку нельзя отменить так как она открыта." + Environment.NewLine + "Открытую заявку можно только закрыть");
+            if(status_z == "Новая")
+            {
+                SQL s = new SQL();
+                if (s.connect_status() == true)
+                {
+                    if (s.cansel_z(Convert.ToInt16(((DataRowView)datagrid_rzi.SelectedItems[0]).Row["id"])) == 1)
+                    {
+                        MessageBox.Show("Заявка отменена");
+                        s.sp_ZAV(Login_, this);
+                    }
+                    else MessageBox.Show("Проблема отмены заявки");
+                }
+                else MessageBox.Show("Нет связи с сервером");
+            }
+            
+        }
+
+        private void Close_z_Click(object sender, RoutedEventArgs e)
+        {
+           
+            if (datagrid_rzi.SelectedItems.Count == 0) return;
+            assessment ass = new assessment();
+            ass.id = Convert.ToInt16(((DataRowView)datagrid_rzi.SelectedItems[0]).Row["id"]);
+            ass.engineer = ((DataRowView)datagrid_rzi.SelectedItems[0]).Row["Техник"].ToString();
+            ass.Show();
+            ass.Closed += new EventHandler(Ref);
+            
+                
+                
+            
+        }
+        private void Ref(object sender, EventArgs e)
+        {
+            SQL s = new SQL();
+            if (s.connect_status() == true) s.sp_ZAV(Login_, this);
+            else MessageBox.Show("Нет связи с сервером");
         }
     }
 }

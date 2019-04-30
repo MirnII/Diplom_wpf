@@ -34,3 +34,5 @@ C:\Users\123\Desktop\Diplom_wpf-master\Diplom_1\Diplom_1\obj\Debug\Diplom_1.cspr
 C:\Users\123\Desktop\Diplom_wpf-master\Diplom_1\Diplom_1\obj\Debug\Diplom_1.csproj.CopyComplete
 C:\Users\123\Desktop\Diplom_wpf-master\Diplom_1\Diplom_1\obj\Debug\Diplom_1.exe
 C:\Users\123\Desktop\Diplom_wpf-master\Diplom_1\Diplom_1\obj\Debug\Diplom_1.pdb
+C:\Users\Мирный\Desktop\Diplom_1\Diplom_1\obj\Debug\assessment.g.cs
+C:\Users\Мирный\Desktop\Diplom_1\Diplom_1\obj\Debug\assessment.baml
